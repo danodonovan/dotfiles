@@ -1,0 +1,29 @@
+# Dan's handy aliases
+
+if _command_exists ack-grep; then
+    alias ack='ack-grep'
+fi
+
+# put some colour in yous ls
+alias ls='ls --color=always'
+
+# some more ls aliases
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+# some people don't have ack
+alias ack='ack-grep'
+
+# cd should help not hinder
+alias cd..='cd ..'
+alias ..='cd ..'
+
+# gragh always ps aux
+alias pa='ps aux'
+
+# display the working directory 
+alias .='echo $PWD'
