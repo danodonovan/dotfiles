@@ -9,9 +9,11 @@ if [ -d "$HOME/.linuxbrew" ]; then
 fi
 
 # now linux brew is setup
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -d "$HOME/.pyenv" ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # set up ssh-agent
 eval $(ssh-agent -s)
