@@ -1,12 +1,40 @@
-# linux brew
-if [ -d "$HOME/.linuxbrew" ]; then
-    BREW_DIR=$HOME/.linuxbrew
-    complete -C "$BREW_DIR/bin/aws_completer" aws
-    export PATH="$BREW_DIR/bin:$PATH"
-    export MANPATH="$BREW_DIR/share/man:$MANPATH"
-    export INFOPATH="$BREW_DIR/share/info:$INFOPATH"
-    export PATH="$BREW_DIR/sbin:$PATH"
-fi
+
+case $OSTYPE in
+darwin*)
+    echo I am osx
+
+    # on OSX keychain seems to be much better than ssha
+    if which keychain &> /dev/null; then
+        eval `keychain --eval --agents ssh id_rsa`
+    fi
+
+    # OSX iTerm only
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+    # os specific alias
+    alias ls='ls -G'
+    ;;
+
+linux-gnu)
+    echo I am linux
+
+    # set up ssh-agent
+    eval $(ssh-agent -s)
+
+    # linux brew
+    if [ -d "$HOME/.linuxbrew" ]; then
+        BREW_DIR=$HOME/.linuxbrew
+        complete -C "$BREW_DIR/bin/aws_completer" aws
+        export PATH="$BREW_DIR/bin:$PATH"
+        export MANPATH="$BREW_DIR/share/man:$MANPATH"
+        export INFOPATH="$BREW_DIR/share/info:$INFOPATH"
+        export PATH="$BREW_DIR/sbin:$PATH"
+    fi
+
+    # os specific alias
+    alias ls='ls --color'
+    ;;
+esac
 
 # now linux brew is setup
 if [ -d "$HOME/.pyenv" ]; then
@@ -15,21 +43,8 @@ if [ -d "$HOME/.pyenv" ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-# OSX iTerm only
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# on OSX keychain seems to be much better than ssha
-if which keychain &> /dev/null; then
-    eval `keychain --eval --agents ssh id_rsa`
-else
-    # set up ssh-agent
-    eval $(ssh-agent -s)
-fi
-
 export EDITOR='vim'
 
-# alias ls='ls --color'
-alias ls='ls -G'
 alias gs='git status'
 alias gb='git branch'
 
