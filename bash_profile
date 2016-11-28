@@ -37,6 +37,13 @@ alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|pr
 alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio -pmd0 ../untracked-backup/'
 alias git-clean-untracked='git clean -n -d'
 
+# AWS cli complete
+complete -C aws_completer aws
+
+# apt-vim
+export PATH=$PATH:$HOME/.vimpkg/bin
+
+## prompt
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
