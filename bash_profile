@@ -15,12 +15,21 @@ if [ -d "$HOME/.pyenv" ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-# set up ssh-agent
-eval $(ssh-agent -s)
+# OSX iTerm only
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# on OSX keychain seems to be much better than ssha
+if which keychain &> /dev/null; then
+    eval `keychain --eval --agents ssh id_rsa`
+else
+    # set up ssh-agent
+    eval $(ssh-agent -s)
+fi
 
 export EDITOR='vim'
 
-alias ls='ls --color'
+# alias ls='ls --color'
+alias ls='ls -G'
 alias gs='git status'
 alias gb='git branch'
 
