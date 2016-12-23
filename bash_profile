@@ -36,11 +36,16 @@ linux-gnu)
     ;;
 esac
 
-# now linux brew is setup
+# if pyenv exists
 if [ -d "$HOME/.pyenv" ]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+fi
+
+# if $HOME/local exists
+if [ -d "$HOME/local" ]; then
+    export PATH="$HOME/local/bin:$PATH"
 fi
 
 export EDITOR='vim'
