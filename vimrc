@@ -7,7 +7,7 @@ set expandtab
 set smartindent
 
 " delete trailing whitespace in only these files
-autocmd FileType md,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " we don't really want to be vi compatible
 set nocompatible
