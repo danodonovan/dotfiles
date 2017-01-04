@@ -36,11 +36,16 @@ linux-gnu)
     ;;
 esac
 
-# now linux brew is setup
+# if pyenv exists
 if [ -d "$HOME/.pyenv" ]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+fi
+
+# if $HOME/local exists
+if [ -d "$HOME/local" ]; then
+    export PATH="$HOME/local/bin:$PATH"
 fi
 
 export EDITOR='vim'
@@ -48,8 +53,10 @@ export EDITOR='vim'
 alias gs='git status'
 alias gb='git branch'
 
+timestamp=$(date +%F_%T)
+git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
-alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio -pmd0 ../untracked-backup/'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../$git_dir.$timestamp/'
 alias git-clean-untracked='git clean -n -d'
 
 # AWS cli complete
@@ -76,7 +83,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\e[1m\][\t] [\e[1m\]$HOSTNAME] \[\e[32m\][\w]\[\e[m\]\n \[\e[1;33m\]\$ \[\e[m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n \$ \[\e[m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

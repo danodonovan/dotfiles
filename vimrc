@@ -9,7 +9,7 @@ set expandtab
 set smartindent
 
 " delete trailing whitespace in only these files
-autocmd FileType md,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " we don't really want to be vi compatible
 set nocompatible
@@ -31,7 +31,7 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
+set number
 set undofile
 
 " do something with the cursorline
