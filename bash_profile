@@ -48,6 +48,11 @@ if [ -d "$HOME/local" ]; then
     export PATH="$HOME/local/bin:$PATH"
 fi
 
+# rust
+if [ -d "$HOME/.cargo" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 export EDITOR='vim'
 
 alias gs='git status'
