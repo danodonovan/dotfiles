@@ -94,3 +94,8 @@ else
 fi
 
 unset color_prompt force_color_prompt
+
+# bash (and so git) completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
