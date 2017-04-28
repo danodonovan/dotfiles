@@ -60,7 +60,7 @@ alias gb='git branch'
 timestamp=$(date +%F_%T)
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
-alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../$git_dir.$timestamp/'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../$git_dir.$timestamp'
 alias git-clean-untracked='git clean -n -d'
 
 # AWS cli complete
