@@ -1,4 +1,3 @@
-
 case $OSTYPE in
 darwin*)
     echo I am osx
@@ -46,6 +45,11 @@ fi
 # if $HOME/local exists
 if [ -d "$HOME/local" ]; then
     export PATH="$HOME/local/bin:$PATH"
+fi
+
+# add rustup
+if [ -d "$HOME/.cargo" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 export EDITOR='vim'
