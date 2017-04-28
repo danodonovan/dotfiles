@@ -47,7 +47,7 @@ if [ -d "$HOME/local" ]; then
     export PATH="$HOME/local/bin:$PATH"
 fi
 
-# add rustup
+# rust
 if [ -d "$HOME/.cargo" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
@@ -107,3 +107,8 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+=======
+# bash (and so git) completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi

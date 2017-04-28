@@ -1,4 +1,6 @@
 " Dan's vimrc file
+syntax on
+
 set background=dark
 " correct the tab sizes
 set tabstop=4
