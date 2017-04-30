@@ -99,3 +99,6 @@ unset color_prompt force_color_prompt
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 fi
+
+# some bash color
+export CLICOLOR=1
