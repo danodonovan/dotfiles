@@ -1,4 +1,3 @@
-
 case $OSTYPE in
 darwin*)
     echo I am osx
@@ -61,7 +60,7 @@ alias gb='git branch'
 timestamp=$(date +%F_%T)
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
-alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../$git_dir.$timestamp/'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../$git_dir.$timestamp'
 alias git-clean-untracked='git clean -n -d'
 
 # AWS cli complete
@@ -95,6 +94,20 @@ fi
 
 unset color_prompt force_color_prompt
 
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+=======
 # bash (and so git) completion
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
