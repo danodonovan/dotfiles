@@ -12,6 +12,10 @@ darwin*)
 
     # os specific alias
     alias ls='ls -G'
+
+    # aws-keychain
+    export PATH=$PATH:${HOME}/code/aws-keychain
+
     ;;
 
 linux-gnu)
