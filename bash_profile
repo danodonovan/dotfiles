@@ -2,11 +2,6 @@ case $OSTYPE in
 darwin*)
     echo I am osx
 
-    # on OSX keychain seems to be much better than ssha
-    if which keychain &> /dev/null; then
-        eval `keychain --eval --agents ssh id_rsa`
-    fi
-
     # OSX iTerm only
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
@@ -20,9 +15,6 @@ darwin*)
 
 linux-gnu)
     echo I am linux
-
-    # set up ssh-agent
-    eval $(ssh-agent -s)
 
     # linux brew
     if [ -d "$HOME/.linuxbrew" ]; then
@@ -38,6 +30,9 @@ linux-gnu)
     alias ls='ls --color'
     ;;
 esac
+
+# set up ssh-agent
+eval $(ssh-agent -s)
 
 # if pyenv exists
 if [ -d "$HOME/.pyenv" ]; then
