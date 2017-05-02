@@ -114,3 +114,7 @@ fi
 
 # some bash color
 export CLICOLOR=1
+
+if [ -f $HOME/.aliases ]; then
+    source $HOME/.aliases
+fi
