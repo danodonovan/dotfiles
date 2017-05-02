@@ -1,6 +1,5 @@
 # Dan's handy aliases
-
-if _command_exists ack-grep; then
+if ! type "ack-grep" > /dev/null; then
     alias ack='ack-grep'
 fi
 
@@ -14,9 +13,6 @@ alias egrep='egrep --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-
-# some people don't have ack
-alias ack='ack-grep'
 
 # cd should help not hinder
 alias cd..='cd ..'
