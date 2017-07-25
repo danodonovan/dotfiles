@@ -1,11 +1,13 @@
 # Dan's handy aliases
-
 if _command_exists ack-grep; then
     alias ack='ack-grep'
 fi
 
-# put some colour in yous ls
-alias ls='ls --color=always'
+# put some colour in your ls (not for BSD ls - ie macOS etc)
+case $OSTYPE in
+linux-gnu)
+    alias ls='ls --color=always'
+esac
 
 # some more ls aliases
 alias grep='grep --color=auto'
