@@ -85,3 +85,6 @@ nnoremap ; :
 " easier buffer cycling / switching
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
+
+:command W w
+:command Q q
