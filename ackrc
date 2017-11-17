@@ -1,7 +1,9 @@
 --ignore-dir=.tox
+--ignore-dir=.cache
+--ignore-dir=*.egg-info
 --ignore-dir=test-reports
 
---ignore-case
+# --ignore-case
 --smart-case
 
 # follow symlinks
