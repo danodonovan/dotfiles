@@ -23,3 +23,8 @@ alias pa='ps aux'
 
 # display the working directory 
 alias .='echo $PWD'
+
+# give neovim a go
+if ! type "nvim" > /dev/null; then
+    alias vim='nvim'
+fi
