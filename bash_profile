@@ -31,6 +31,10 @@ linux-gnu)
     ;;
 esac
 
+# Click complains if this isn't set
+export LC_ALL=en_GB.UTF-8
+export LANG=en_GB.UTF-8
+
 # set up ssh-agent
 eval $(ssh-agent -s)
 

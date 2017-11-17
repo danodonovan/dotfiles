@@ -3,8 +3,11 @@ if ! type "ack-grep" > /dev/null; then
     alias ack='ack-grep'
 fi
 
-# put some colour in yous ls
-alias ls='ls --color=always'
+# put some colour in your ls (not for BSD ls - ie macOS etc)
+case $OSTYPE in
+linux-gnu)
+    alias ls='ls --color=always'
+esac
 
 # some more ls aliases
 alias grep='grep --color=auto'
@@ -25,6 +28,7 @@ alias pa='ps aux'
 alias .='echo $PWD'
 
 # give neovim a go
-if ! type "nvim" > /dev/null; then
+if type "nvim" > /dev/null; then
     alias vim='nvim'
+    alias vi='nvim'
 fi

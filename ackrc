@@ -1,0 +1,10 @@
+--ignore-dir=.tox
+--ignore-dir=test-reports
+
+--ignore-case
+--smart-case
+
+# follow symlinks
+--follow
+
+--type-set=delimited=.csv,.tsv
