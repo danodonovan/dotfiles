@@ -1,13 +1,12 @@
 # Dan's handy aliases
+
+# some people don't have ack
 if ! type "ack-grep" > /dev/null; then
     alias ack='ack-grep'
 fi
 
-# put some colour in your ls (not for BSD ls - ie macOS etc)
-case $OSTYPE in
-linux-gnu)
-    alias ls='ls --color=always'
-esac
+# put some colour in your ls
+alias ls='ls --color=always'
 
 # some more ls aliases
 alias grep='grep --color=auto'
@@ -16,6 +15,11 @@ alias egrep='egrep --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+
+# if on macOS
+if ! type "mdfind" > /dev/null; then
+    alias locate='mdfind'
+fi
 
 # cd should help not hinder
 alias cd..='cd ..'

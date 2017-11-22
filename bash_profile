@@ -11,8 +11,15 @@ darwin*)
     # aws-keychain
     export PATH=$PATH:${HOME}/code/aws-keychain
 
-    ;;
+    # if using brew, add bash completion
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
 
+    # if coreutils have been installed with brew
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    ;;
 linux-gnu)
     echo I am linux
 
@@ -30,6 +37,10 @@ linux-gnu)
     alias ls='ls --color'
     ;;
 esac
+
+if [ -e "$HOME/.aliases" ]; then
+    source $HOME/.aliases
+fi
 
 # Click complains if this isn't set
 export LC_ALL=en_GB.UTF-8
@@ -122,3 +133,12 @@ export CLICOLOR=1
 if [ -f $HOME/.aliases ]; then
     source $HOME/.aliases
 fi
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# less syntax highlighting
+# $ brew install source-highlight
+export LESSOPEN="| /usr/local/Cellar/source-highlight/3.1.8_7/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
