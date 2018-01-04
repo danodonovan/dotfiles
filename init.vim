@@ -38,6 +38,9 @@ set laststatus=2
 set number
 set undofile
 
+set cursorcolumn
+set cursorline
+
 " do something with the cursorline
 " :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
