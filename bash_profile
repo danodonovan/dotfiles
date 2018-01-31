@@ -49,13 +49,6 @@ export LANG=en_GB.UTF-8
 # set up ssh-agent
 eval $(ssh-agent -s)
 
-# if pyenv exists
-if [ -d "$HOME/.pyenv" ]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
 # if $HOME/local exists
 if [ -d "$HOME/local" ]; then
     export PATH="$HOME/local/bin:$PATH"
@@ -142,3 +135,10 @@ eval "$(jenv init -)"
 # $ brew install source-highlight
 export LESSOPEN="| /usr/local/Cellar/source-highlight/3.1.8_7/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
+
+# if pyenv exists
+if [ -d "$HOME/.pyenv" ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
