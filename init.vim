@@ -38,6 +38,9 @@ set laststatus=2
 set number
 set undofile
 
+set cursorcolumn
+set cursorline
+
 " do something with the cursorline
 " :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -99,6 +102,7 @@ nnoremap ; :
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
+Plug 'https://github.com/neo4j-contrib/cypher-vim-syntax.git'
 
 " Initialize plugin system
 call plug#end()
