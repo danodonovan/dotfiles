@@ -1,0 +1,12 @@
+ack
+bash-completion
+dbus
+diff-so-fancy
+git
+imagemagick
+libyaml
+neo4j
+neovim
+pyenv-virtualenv
+tmux
+watch
