@@ -142,3 +142,6 @@ if [ -d "$HOME/.pyenv" ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+# bash completion (if installed)
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
