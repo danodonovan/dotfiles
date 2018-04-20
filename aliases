@@ -5,9 +5,6 @@ if type "ack-grep" 2> /dev/null; then
     alias ack='ack-grep'
 fi
 
-# put some colour in your ls
-alias ls='ls --color=always'
-
 # some more ls aliases
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
