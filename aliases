@@ -5,6 +5,11 @@ if type "ack-grep" 2> /dev/null; then
     alias ack='ack-grep'
 fi
 
+# ls with colour is version specific (ie GNU coreutils) not OS
+if ls --color -d . >/dev/null 2>&1; then
+    alias ls='ls --color'
+fi
+
 # some more ls aliases
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
