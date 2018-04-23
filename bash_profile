@@ -5,9 +5,6 @@ darwin*)
     # OSX iTerm only
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-    # os specific alias
-    alias ls='ls -G'
-
     # aws-keychain
     export PATH=$PATH:${HOME}/code/aws-keychain
 
@@ -32,10 +29,6 @@ linux-gnu)
         export INFOPATH="$BREW_DIR/share/info:$INFOPATH"
         export PATH="$BREW_DIR/sbin:$PATH"
     fi
-
-    # os specific alias
-    alias ls='ls --color'
-    ;;
 esac
 
 if [ -e "$HOME/.aliases" ]; then
