@@ -116,10 +116,6 @@ fi
 # some bash color
 export CLICOLOR=1
 
-if [ -f $HOME/.aliases ]; then
-    source $HOME/.aliases
-fi
-
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
