@@ -4,9 +4,10 @@ coreutils
 bash
 bash-completion
 diff-so-fancy
-tmux
+lesspipe
 neovim
 pyenv-virtualenv
+tmux
 watch
 wget
 
