@@ -58,15 +58,6 @@ else
     export EDITOR='vim'
 fi
 
-alias gs='git status'
-alias gb='git branch'
-
-timestamp=$(date +%F_%T)
-git_dir=$(basename $(pwd))
-alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
-alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../${PWD##*/}.$timestamp'
-alias git-clean-untracked='git clean -n -d'
-
 # AWS cli complete
 complete -C aws_completer aws
 

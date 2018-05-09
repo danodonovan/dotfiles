@@ -38,3 +38,13 @@ if [ -x "$(command -v nvim)" ]; then
     alias vim='nvim'
     alias vi='nvim'
 fi
+
+# git alias
+alias gs='git status -s'
+alias gb='git branch'
+
+timestamp=$(date +%F_%T)
+git_dir=$(basename $(pwd))
+alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../${PWD##*/}.$timestamp'
+alias git-clean-untracked='git clean -n -d'
