@@ -52,7 +52,11 @@ if [ -d "$HOME/.cargo" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-export EDITOR='vim'
+if [ -x "$(command -v nvim)" ]; then
+    export EDITOR='nvim'
+else
+    export EDITOR='vim'
+fi
 
 alias gs='git status'
 alias gb='git branch'
