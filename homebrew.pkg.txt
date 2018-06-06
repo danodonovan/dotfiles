@@ -1,0 +1,25 @@
+# essentials!
+ack
+coreutils
+bash
+bash-completion
+diff-so-fancy
+lesspipe
+neovim
+pyenv-virtualenv
+tmux
+watch
+wget
+
+# development
+automake
+chromedriver
+awscli
+cmake
+gcc
+git-annex
+git-lfs
+glances
+jq
+node
+postgresql
