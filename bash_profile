@@ -117,8 +117,10 @@ fi
 export CLICOLOR=1
 
 # jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if [ -d "$HOME/.jenv" ]; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+fi
 
 # less syntax highlighting
 # $ brew install source-highlight
