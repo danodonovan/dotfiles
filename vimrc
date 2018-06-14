@@ -102,5 +102,8 @@ Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
 " Initialize plugin system
 call plug#end()
 
-
 colorscheme jellybeans
+
+""" macro
+" import IPython; IPython.embed()
+nnoremap <silent> emb :let a='import IPython; IPython.embed(header='''')'\|put=a<cr>
