@@ -8,6 +8,7 @@ set expandtab
 set smartindent
 
 " delete trailing whitespace in only these files
+:filetype on
 autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " apparently these commands just make things that much better
@@ -81,8 +82,9 @@ nnoremap ; :
 :nnoremap <C-p> :bprevious<CR>
 
 " let's just say that W is the same as w ...
-:command W w
-:command Q q
+command! W  write
+command! Q  quit
+
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -107,3 +109,7 @@ colorscheme jellybeans
 """ macro
 " import IPython; IPython.embed()
 nnoremap <silent> emb :let a='import IPython; IPython.embed(header='''')'\|put=a<cr>
+
+""" buffers in nvim
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_nr_show = 1
