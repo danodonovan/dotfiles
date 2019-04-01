@@ -43,8 +43,8 @@ export LANG=en_GB.UTF-8
 eval $(ssh-agent -s)
 
 # if $HOME/local exists
-if [ -d "$HOME/local" ]; then
-    export PATH="$HOME/local/bin:$PATH"
+if [ -d "$HOME/.local" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # rust
