@@ -44,9 +44,10 @@ alias gs='git status -s'
 alias gb='git branch'
 
 timestamp=$(date +%F_%T)
+backup_dir='/Volumes/Data/git-untracked'
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
-alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ../${PWD##*/}.$timestamp'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ${backup_dir}/${PWD##*/}.$timestamp'
 alias git-clean-untracked='git clean -n -d'
 
 # docker for smaller terminals!
