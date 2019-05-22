@@ -160,3 +160,18 @@ export PROMPT_COMMAND="$PROMPT_COMMAND pyenvVirtualenvUpdatePrompt;"
 
 # bash completion (if installed)
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+GCLOUD_SDK=$HOME/.local/google-cloud-sdk
+if [ -d '${GCLOUD_SDK}/bin' ]; then
+    export PATH='${GCLOUD_SDK}/bin':$PATH;
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '${GCLOUD_SDK}/path.bash.inc' ]; then
+    . '${GCLOUD_SDK}/path.bash.inc';
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '${GCLOUD_SDK}/completion.bash.inc' ]; then
+    . '${GCLOUD_SDK}/completion.bash.inc';
+fi
