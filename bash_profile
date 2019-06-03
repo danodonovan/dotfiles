@@ -158,9 +158,6 @@ pyenvVirtualenvUpdatePrompt() {
 export PROMPT_COMMAND="$PROMPT_COMMAND pyenvVirtualenvUpdatePrompt;"
 
 
-# bash completion (if installed)
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
 GCLOUD_SDK=$HOME/.local/google-cloud-sdk
 if [ -d $GCLOUD_SDK ]; then
     echo "Add google cloud SDK $GCLOUD_SDK to PATH and enable shell commands"
@@ -179,3 +176,11 @@ fi
 if [ -f ${GCLOUD_SDK}/completion.bash.inc ]; then
     . ${GCLOUD_SDK}/completion.bash.inc;
 fi
+
+# bash completion (if installed)
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
+    # if not found in /usr/local/etc, try the brew --prefix location
+    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+}
+
