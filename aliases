@@ -39,6 +39,10 @@ if [ -x "$(command -v nvim)" ]; then
     alias vi='nvim'
 fi
 
+if [ -x "$(command -v bat)" ]; then
+    alias cat='bat'
+fi
+
 # git alias
 alias gs='git status -s'
 alias gb='git branch'
