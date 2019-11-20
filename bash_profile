@@ -119,7 +119,7 @@ fi
 
 # less syntax highlighting
 # $ brew install source-highlight
-export LESSOPEN="| /usr/local/Cellar/source-highlight/3.1.8_7/bin/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 # if pyenv exists
