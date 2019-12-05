@@ -17,12 +17,27 @@ darwin*)
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     ;;
+linux-gnueabihf)
+    echo I am Raspberry Pi
+
+    # linux brew
+    LINUX_BREW="/home/linuxbrew/.linuxbrew"
+    if [ -d $LINUX_BREW ]; then
+        BREW_DIR=$LINUX_BREW
+        complete -C "$BREW_DIR/bin/aws_completer" aws
+        export PATH="$BREW_DIR/bin:$PATH"
+        export MANPATH="$BREW_DIR/share/man:$MANPATH"
+        export INFOPATH="$BREW_DIR/share/info:$INFOPATH"
+        export PATH="$BREW_DIR/sbin:$PATH"
+    fi
+    ;;
 linux-gnu)
     echo I am linux
 
     # linux brew
-    if [ -d "$HOME/.linuxbrew" ]; then
-        BREW_DIR=$HOME/.linuxbrew
+    LINUX_BREW="/home/linuxbrew/.linuxbrew"
+    if [ -d $LINUX_BREW ]; then
+        BREW_DIR=$LINUX_BREW
         complete -C "$BREW_DIR/bin/aws_completer" aws
         export PATH="$BREW_DIR/bin:$PATH"
         export MANPATH="$BREW_DIR/share/man:$MANPATH"
