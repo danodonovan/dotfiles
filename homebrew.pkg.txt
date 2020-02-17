@@ -6,11 +6,13 @@ bash-completion
 diff-so-fancy
 lesspipe
 neovim
+pyenv
 pyenv-virtualenv
 tmux
 watch
 wget
 git
+htop
 
 # development
 automake
