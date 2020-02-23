@@ -97,7 +97,7 @@ endif
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/nvim/site/autoload/plug.vim')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
 
