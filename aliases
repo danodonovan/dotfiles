@@ -1,7 +1,7 @@
 # Dan's handy aliases
 
 # some people don't have ack
-if type "ack-grep" 2> /dev/null; then
+if type "ack-grep" > /dev/null; then
     alias ack='ack-grep'
 fi
 
