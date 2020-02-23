@@ -101,7 +101,7 @@ nnoremap ; :
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
+Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
 Plug 'https://github.com/neo4j-contrib/cypher-vim-syntax.git'
 
 " Initialize plugin system
