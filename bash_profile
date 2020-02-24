@@ -157,26 +157,6 @@ pyenvVirtualenvUpdatePrompt() {
 }
 export PROMPT_COMMAND="$PROMPT_COMMAND pyenvVirtualenvUpdatePrompt;"
 
-
-GCLOUD_SDK=$HOME/.local/google-cloud-sdk
-if [ -d $GCLOUD_SDK ]; then
-    echo "Add google cloud SDK $GCLOUD_SDK to PATH and enable shell commands"
-fi
-
-if [ -d $GCLOUD_SDK/bin ]; then
-    export PATH=$GCLOUD_SDK/bin:$PATH;
-fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f ${GCLOUD_SDK}/path.bash.inc ]; then
-    . ${GCLOUD_SDK}/path.bash.inc;
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f ${GCLOUD_SDK}/completion.bash.inc ]; then
-    . ${GCLOUD_SDK}/completion.bash.inc;
-fi
-
 # bash completion (if installed)
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
     # if not found in /usr/local/etc, try the brew --prefix location
@@ -184,3 +164,9 @@ fi
         . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
 }
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dan/.local/google-cloud-sdk/path.bash.inc' ]; then . '/Users/dan/.local/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dan/.local/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/dan/.local/google-cloud-sdk/completion.bash.inc'; fi
