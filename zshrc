@@ -69,7 +69,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git gcloud ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,9 +110,12 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dan/.local/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dan/.local/google-cloud-sdk/path.zsh.inc'; fi$
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/dan/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dan/.local/google-cloud-sdk/completion.zsh.inc'; fi
+
+path=('/Users/dan/.local/bin' $path)
+path=('/Users/dan/.local/google-cloud-sdk/bin' $path)
+export PATH
