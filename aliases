@@ -52,6 +52,7 @@ backup_dir='/Volumes/Data/git-untracked'
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|staging|production)" | xargs git branch -d'
 alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ${backup_dir}/${PWD##*/}.$timestamp'
+alias git-backup-untracked-s3='git ls-files --others --exclude-standard | xargs -I{} aws s3 cp {} s3://YOURS3DIR/git-untracked/${PWD##*/}.$timestamp/{}'
 alias git-clean-untracked='git clean -n -d'
 
 # docker for smaller terminals!
