@@ -108,3 +108,31 @@ if [ -f ~/.aliases ]; then
 else
     print "404: ~/.aliases not found."
 fi
+
+# pyenv 2.0
+if [[ -z $POETRY_ACTIVE ]]; then
+    eval "$(pyenv init --path)"
+else
+    # POETRY_ACTIVE env set
+    echo "Poetry Shell"
+fi
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# colourful less
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
+
+# The next line updates PATH for the Google Cloud SDK.
+. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+# The next line enables shell command completion for gcloud.
+. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+# Pragmatic Programmer mesage of the moment
+ppotm
