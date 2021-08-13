@@ -100,6 +100,7 @@ endif
 call plug#begin('~/.local/share/nvim/site/autoload/plug.vim')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
+Plug 'alaviss/nim.nvim'
 
 " Initialize plugin system
 call plug#end()
