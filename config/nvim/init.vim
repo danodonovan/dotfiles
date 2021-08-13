@@ -99,12 +99,15 @@ nnoremap ; :
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.local/share/nvim/plugged')
+:call plug#begin('~/.config/nvim')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
 Plug 'https://github.com/neo4j-contrib/cypher-vim-syntax.git'
+Plug 'alaviss/nim.nvim'
 
 " Initialize plugin system
 call plug#end()
 
 colorscheme jellybeans
+
+let g:python3_host_prog = '/Users/dan/.pyenv/versions/neovim/bin/python'
