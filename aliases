@@ -45,7 +45,7 @@ fi
 
 # git alias
 alias gs='git status -s'
-alias gb='git branch'
+alias gb='git branch --sort=committerdate'
 
 timestamp=$(date +%F_%T)
 backup_dir='/Volumes/Data/git-untracked'
