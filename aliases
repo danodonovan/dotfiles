@@ -39,18 +39,32 @@ if [ -x "$(command -v nvim)" ]; then
     alias vi='nvim'
 fi
 
+## Rusty equivalents
 if [ -x "$(command -v bat)" ]; then
     alias cat='bat'
 fi
+
+if [ -x "$(command -v lsd)" ]; then
+    alias ls='lsd'
+fi
+
+if [ -x "$(command -v dust)" ]; then
+    alias du='dust'
+fi
+## end
 
 # git alias
 alias gs='git status -s'
 alias gb='git branch --sort=committerdate'
 
 timestamp=$(date +%F_%T)
-backup_dir='/Volumes/Data/git-untracked'
+if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+    backup_dir='/Users/dan/Archive/git-untracked'
+else
+    backup_dir='/Volumes/Datan/git-untracked'
+fi
 git_dir=$(basename $(pwd))
-alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|main|staging|production)" | xargs git branch -d'
+alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d'
 alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ${backup_dir}/${PWD##*/}.$timestamp'
 alias git-backup-untracked-s3='git ls-files --others --exclude-standard | xargs -I{} aws s3 cp {} s3://YOURS3DIR/git-untracked/${PWD##*/}.$timestamp/{}'
 alias git-clean-untracked='git clean -n -d'
@@ -59,4 +73,8 @@ alias git-clean-untracked='git clean -n -d'
 alias ds="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
 alias di="docker images --format 'table {{.Repository}}\t{{.Tag}}'"
 
-alias poetry_shell='source "$(dirname $(poetry run which python))"/activate'
+if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+    alias brew='arch -x86_64 brew'
+fi
+
+alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'

@@ -18,3 +18,5 @@
 	process = git-lfs filter-process
 [init]
 	templatedir = ~/.git-templates
+[commit]
+	gpgsign = true
