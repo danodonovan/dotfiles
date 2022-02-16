@@ -74,7 +74,7 @@ zstyle :omz:plugins:ssh-agent lifetime 4h
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gcloud ssh-agent pyenv)
+plugins=(git ssh-agent python pyenv zsh-syntax-highlighting poetry macos tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,20 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-else
-    print "404: ~/.aliases not found."
-fi
-
-# pyenv 2.0
-if [[ -z $POETRY_ACTIVE ]]; then
-    eval "$(pyenv init --path)"
-else
-    # POETRY_ACTIVE env set
-    echo "Poetry Shell"
-fi
-
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
