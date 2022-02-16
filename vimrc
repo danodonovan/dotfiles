@@ -21,6 +21,7 @@ autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer
 " set wildmenu
 " set wildmode=list:longest
 set visualbell
+set noerrorbells
 " set nocursorline
 " set ttyfast
 " set ruler
