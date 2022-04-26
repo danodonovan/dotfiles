@@ -61,7 +61,7 @@ timestamp=$(date +%F_%T)
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
     backup_dir='/Users/dan/Archive/git-untracked'
 else
-    backup_dir='/Volumes/Datan/git-untracked'
+    backup_dir='/Volumes/Data/git-untracked'
 fi
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d'
