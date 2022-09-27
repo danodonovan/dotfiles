@@ -114,10 +114,10 @@ export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
 # The next line updates PATH for the Google Cloud SDK.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
