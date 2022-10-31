@@ -55,7 +55,8 @@ fi
 
 # git alias
 alias gs='git status -s'
-alias gb='git branch --sort=committerdate'
+# alias gb='git branch --sort=committerdate'
+alias gb='git br'
 
 timestamp=$(date +%F_%T)
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
