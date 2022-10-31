@@ -19,7 +19,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # if on macOS
-if type "mdfind" 2> /dev/null; then
+if type "mdfind" > /dev/null; then
     alias locate='mdfind'
 fi
 
