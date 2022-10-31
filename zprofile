@@ -11,3 +11,4 @@ else
     print "404: ~/.aliases not found."
 fi
 
+export AWS_PROFILE=prod-read-only

@@ -79,4 +79,4 @@ fi
 
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
 
-alias aws-login='aws sso login --profile prod-read-only'
+alias aws-login='aws sso login --profile ${AWS_PROFILE}'
