@@ -66,7 +66,7 @@ COMPLETION_WAITING_DOTS="true"
 
 ## ssh stuff
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa_dadBeast
+zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # Which plugins would you like to load?
@@ -74,7 +74,8 @@ zstyle :omz:plugins:ssh-agent lifetime 4h
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent python pyenv zsh-syntax-highlighting poetry macos tmux)
+# plugins=(git ssh-agent python pyenv zsh-syntax-highlighting poetry macos tmux)
+plugins=(git ssh-agent pyenv zsh-syntax-highlighting macos tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,10 +113,10 @@ export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
 # The next line updates PATH for the Google Cloud SDK.
-. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 # The next line enables shell command completion for gcloud.
-. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"

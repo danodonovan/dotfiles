@@ -19,7 +19,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # if on macOS
-if type "mdfind" 2> /dev/null; then
+if type "mdfind" > /dev/null; then
     alias locate='mdfind'
 fi
 
@@ -55,7 +55,8 @@ fi
 
 # git alias
 alias gs='git status -s'
-alias gb='git branch --sort=committerdate'
+# alias gb='git branch --sort=committerdate'
+alias gb='git br'
 
 timestamp=$(date +%F_%T)
 if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
@@ -78,3 +79,5 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
 fi
 
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
+
+alias aws-login='aws sso login --profile ${AWS_PROFILE}'
