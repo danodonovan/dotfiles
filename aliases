@@ -78,3 +78,5 @@ if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
 fi
 
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
+
+alias aws-login='aws sso login --profile prod-read-only'
