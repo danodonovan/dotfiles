@@ -67,7 +67,11 @@ COMPLETION_WAITING_DOTS="true"
 
 ## ssh stuff
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
+if [ "$HOSTNAME" = "dano-macmini" ]; then
+    zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
+elif [ "$HOSTNAME" = "dano-m1" ]; then
+    zstyle :omz:plugins:ssh-agent identities id_ed25519_m1
+fi
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # Which plugins would you like to load?
