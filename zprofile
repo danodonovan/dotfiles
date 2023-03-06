@@ -1,5 +1,6 @@
+## This file is sourced before zshrc
 ## Edit this file for settings in non-interactive shells
-
+export HOSTNAME="$(networksetup -getcomputername)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"

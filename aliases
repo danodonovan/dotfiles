@@ -68,10 +68,10 @@ alias gs='git status -s'
 alias gb='git br'
 
 timestamp=$(date +%F_%T)
-if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
-    backup_dir='/Users/dan/Archive/git-untracked'
-else
+if [ "$HOSTNAME" = "dano-macmini" ]; then
     backup_dir='/Volumes/Data/git-untracked'
+elif [ "$HOSTNAME" = "dano-m1" ]; then
+    backup_dir='/Users/dan/Archive/git-untracked'
 fi
 git_dir=$(basename $(pwd))
 alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d'
