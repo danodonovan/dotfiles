@@ -1,5 +1,7 @@
 " Dan's vimrc file
-syntax on
+
+" set default python
+let g:python3_host_prog = expand('~/.pyenv/versions/nvim-default-py310/bin/python')
 
 " correct the tab sizes
 set tabstop=4
@@ -9,7 +11,7 @@ set smartindent
 
 " delete trailing whitespace in only these files
 :filetype on
-autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType markdown,c,cpp,java,php,python,html,yaml,md autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " apparently these commands just make things that much better
 " set encoding=utf-8
@@ -101,8 +103,8 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
-Plug 'alaviss/nim.nvim'
-Plug 'hashivim/vim-terraform'
+" Plug 'alaviss/nim.nvim'
+" Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()

@@ -34,10 +34,19 @@ alias pa='ps aux'
 alias .='echo $PWD'
 
 # give neovim a go
-if [ -x "$(command -v nvim)" ]; then
-    alias vim='nvim'
-    alias vi='nvim'
-fi
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim "$@"
+    deactivate
+  else
+    command nvim "$@"
+  fi
+}
+
+alias nvim=nvimvenv
+alias vim=nvimvenv
+alias vi=nvimvenv
 
 ## Rusty equivalents
 if [ -x "$(command -v bat)" ]; then
