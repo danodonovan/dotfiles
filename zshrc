@@ -9,8 +9,14 @@ export ZSH="/Users/dan/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
-SPACESHIP_GCLOUD_SHOW=false
+# ZSH_THEME="spaceship"
+# We've installed homebrew, so don't use ZSH_THEME
+# export SPACESHIP_CONFIG="$HOME/Code/dotfiles/spaceship.zsh"
+source $(brew --prefix)/opt/spaceship/spaceship.zsh
+# source "/usr/local/opt/spaceship/spaceship.zsh"
+# SPACESHIP_GCLOUD_SHOW=false
+# SPACESHIP_DOCKER_SHOW=false
+# SPACESHIP_AWS_SHOW=false
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -47,7 +53,7 @@ SPACESHIP_GCLOUD_SHOW=false
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -80,7 +86,8 @@ zstyle :omz:plugins:ssh-agent lifetime 4h
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git ssh-agent python pyenv zsh-syntax-highlighting poetry macos tmux)
-plugins=(git ssh-agent pyenv zsh-syntax-highlighting macos tmux)
+# plugins=(git ssh-agent zsh-syntax-highlighting macos tmux pyenv)
+plugins=(git ssh-agent pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,13 +125,16 @@ export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
 # The next line updates PATH for the Google Cloud SDK.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 # The next line enables shell command completion for gcloud.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 # Pragmatic Programmer mesage of the moment
 ppotm
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

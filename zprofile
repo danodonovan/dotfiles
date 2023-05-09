@@ -13,3 +13,15 @@ else
 fi
 
 export AWS_PROFILE=prod-read-only
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# for tables
+export HDF5_DIR=$(brew --prefix)/opt/hdf5
+export BLOSC_DIR=$(brew --prefix)/opt/c-blosc
+
+
+# for the shell theme
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_PYTHON_SHOW=true

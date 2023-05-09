@@ -74,10 +74,24 @@ alias git-clean-untracked='git clean -n -d'
 alias ds="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
 alias di="docker images --format 'table {{.Repository}}\t{{.Tag}}'"
 
-if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
-    alias brew='arch -x86_64 brew'
-fi
+# if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+#     alias brew='arch -x86_64 brew'
+# fi
 
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
 
 alias aws-login='aws sso login --profile ${AWS_PROFILE}'
+
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim "$@"
+    deactivate
+  else
+    command nvim "$@"
+  fi
+}
+
+alias nvim=nvimvenv
+
+alias vim=nvim

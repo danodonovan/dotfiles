@@ -1,5 +1,5 @@
 " Dan's vimrc file
-syntax on
+let g:python3_host_prog = expand('~/.pyenv/versions/nvim310/bin/python')
 
 " correct the tab sizes
 set tabstop=4
@@ -20,8 +20,8 @@ autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer
 " set hidden
 " set wildmenu
 " set wildmode=list:longest
-set visualbell
-set noerrorbells
+" set visualbell
+" set noerrorbells
 " set nocursorline
 " set ttyfast
 " set ruler
@@ -36,8 +36,8 @@ set number
 " :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " this helps with searching and replacing
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /\v
 set ignorecase
 set smartcase
 "set gdefault
@@ -71,22 +71,22 @@ nnoremap j gj
 nnoremap k gk
 
 " remove help key that is similar to escape key
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-" and remap the ; to :
-nnoremap ; :
-
-" easier buffer cycling / switching
-:nnoremap <C-n> :bnext<CR>
-:nnoremap <C-p> :bprevious<CR>
-
-" let's just say that W is the same as w ...
-command! W  write
-command! Q  quit
-
-
+" inoremap <F1> <ESC>
+" nnoremap <F1> <ESC>
+" vnoremap <F1> <ESC>
+" 
+" " and remap the ; to :
+" nnoremap ; :
+" 
+" " easier buffer cycling / switching
+" :nnoremap <C-n> :bnext<CR>
+" :nnoremap <C-p> :bprevious<CR>
+" 
+" " let's just say that W is the same as w ...
+" command! W  write
+" command! Q  quit
+" 
+" 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -100,19 +100,21 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
+" Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'alaviss/nim.nvim'
 Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
 
-colorscheme jellybeans
+" colorscheme jellybeans
+" colorscheme dracula
 
 """ macro
 " import IPython; IPython.embed()
 nnoremap <silent> emb :let a='import IPython; IPython.embed(header='''')'\|put=a<cr>
 
 """ buffers in nvim
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
