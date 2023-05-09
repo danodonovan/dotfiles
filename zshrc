@@ -11,6 +11,8 @@ export ZSH="/Users/dan/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="spaceship"
 SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_TIME_SHOW=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,13 +68,13 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 ## ssh stuff
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-if [ "$HOSTNAME" = "dano-macmini" ]; then
-    zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
-elif [ "$HOSTNAME" = "dano-m1" ]; then
-    zstyle :omz:plugins:ssh-agent identities id_ed25519_m1
-fi
-zstyle :omz:plugins:ssh-agent lifetime 4h
+# zstyle :omz:plugins:ssh-agent agent-forwarding on
+# if [ "$HOSTNAME" = "dano-macmini" ]; then
+#     zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
+# elif [ "$HOSTNAME" = "dano-m1" ]; then
+#     zstyle :omz:plugins:ssh-agent identities id_ed25519_m1
+# fi
+# zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -83,6 +85,14 @@ zstyle :omz:plugins:ssh-agent lifetime 4h
 plugins=(git ssh-agent pyenv zsh-syntax-highlighting macos tmux)
 
 source $ZSH/oh-my-zsh.sh
+
+## ssh stuff
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
+zstyle :omz:plugins:ssh-agent lifetime 4h
+
+# reminder to update omz
+zstyle ':omz:update' mode reminder
 
 # User configuration
 
@@ -118,10 +128,10 @@ export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
 # The next line updates PATH for the Google Cloud SDK.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
