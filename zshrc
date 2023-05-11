@@ -119,8 +119,13 @@ zstyle ':omz:update' mode reminder
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# rust
+
+# Custom PATH updates
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
 
 # colourful less
 LESSPIPE=`which src-hilite-lesspipe.sh`
@@ -132,9 +137,6 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 # Pragmatic Programmer mesage of the moment
 ppotm
