@@ -123,7 +123,7 @@ zstyle ':omz:update' mode reminder
 # Custom PATH updates
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 
