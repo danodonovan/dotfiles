@@ -47,11 +47,6 @@ if [ -d "$HOME/.local" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# rust
-if [ -d "$HOME/.cargo" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 if [ -x "$(command -v nvim)" ]; then
     export EDITOR='nvim'
 else
@@ -184,3 +179,7 @@ fi
         . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
 }
 
+# rust
+if [ -d "$HOME/.cargo" ]; then
+    . "$HOME/.cargo/env"
+fi
