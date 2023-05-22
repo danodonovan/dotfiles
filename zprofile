@@ -13,3 +13,8 @@ else
 fi
 
 export AWS_PROFILE=prod-read-only
+
+# set homebrew cache to external drive
+if [ -d "/Volumes/Data-02" ]; then
+    export HOMEBREW_CACHE=/Volumes/Data-02/Caches/Homebrew
+fi
