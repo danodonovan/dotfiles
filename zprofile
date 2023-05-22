@@ -1,5 +1,11 @@
 ## This file is sourced before zshrc
 ## Edit this file for settings in non-interactive shells
+
+export PATH=$HOME/.local/bin:$PATH
+if [ -d "/opt/homebrew" ]; then
+    export PATH=/opt/homebrew/bin:$PATH
+fi
+
 export HOSTNAME="$(networksetup -getcomputername)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
