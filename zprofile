@@ -24,3 +24,6 @@ export AWS_PROFILE=prod-read-only
 if [ -d "/Volumes/Data-02" ]; then
     export HOMEBREW_CACHE=/Volumes/Data-02/Caches/Homebrew
 fi
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"

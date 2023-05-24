@@ -122,11 +122,5 @@ LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
 
-# The next line updates PATH for the Google Cloud SDK.
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-
-# The next line enables shell command completion for gcloud.
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
 # Pragmatic Programmer mesage of the moment
 ppotm
