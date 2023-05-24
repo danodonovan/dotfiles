@@ -1,6 +1,6 @@
 ## This file is sourced before zshrc
 ## Edit this file for settings in non-interactive shells
-
+export PATH="/usr/local/sbin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
 if [ -d "/opt/homebrew" ]; then
     export PATH=/opt/homebrew/bin:$PATH
