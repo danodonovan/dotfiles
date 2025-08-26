@@ -38,8 +38,7 @@ eval $(atuin init zsh)
 
 export EDITOR="nvim"
 
-# Load API keys from 1Password
-if command -v op &> /dev/null; then
-    export OPENAI_API_KEY=$(op read "op://Private/OpenAI API Key/credential")
-    export GEMINI_API_KEY=$(op read "op://Private/Gemini API Key/credential")
+# Load environment secrets from 1Password
+if [[ -f "$HOME/.config/op/env_loader.sh" ]]; then
+    source "$HOME/.config/op/env_loader.sh"
 fi

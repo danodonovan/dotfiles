@@ -5,3 +5,10 @@
 /Brewfile
 /iterm_default_profile.json
 /convert_to_chezmoi.sh
+
+# Local secret files (if any)
+.env
+.env.local
+**/*.key
+**/*.pem
+**/secrets.json
