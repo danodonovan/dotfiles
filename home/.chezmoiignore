@@ -1,0 +1,7 @@
+/.github/
+/git-templates/
+/UHK/
+/PyCharm/
+/Brewfile
+/iterm_default_profile.json
+/convert_to_chezmoi.sh
