@@ -1,9 +1,11 @@
 ## This file is sourced before zshrc
 ## Edit this file for settings in non-interactive shells
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:$HOME/Code/ssh-over-ssm"
 export PATH=$HOME/.local/bin:$PATH
 if [ -d "/opt/homebrew" ]; then
     export PATH=/opt/homebrew/bin:$PATH
+    export PATH=/opt/homebrew/sbin:$PATH
 fi
 
 export HOSTNAME="$(networksetup -getcomputername)"
@@ -19,6 +21,7 @@ else
 fi
 
 export AWS_PROFILE=prod-read-only
+# export AWS_PROFILE=biorelate
 
 # set homebrew cache to external drive
 if [ -d "/Volumes/Data-02" ]; then
@@ -27,3 +30,16 @@ fi
 
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+source "$HOME/.cargo/env"
+
+# source atuin
+eval $(atuin init zsh)
+
+export EDITOR="nvim"
+
+# Load API keys from 1Password
+if command -v op &> /dev/null; then
+    export OPENAI_API_KEY=$(op read "op://Private/OpenAI API Key/credential")
+    export GEMINI_API_KEY=$(op read "op://Private/Gemini API Key/credential")
+fi

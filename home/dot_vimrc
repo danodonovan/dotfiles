@@ -1,7 +1,8 @@
 " Dan's vimrc file
 
 " set default python
-let g:python3_host_prog = expand('~/.pyenv/versions/nvim-default-py310/bin/python')
+" let g:python3_host_prog = expand('~/.pyenv/versions/nvim-default-py310/bin/python')
+let g:python3_host_prog = '/Users/dan/.pyenv/versions/nvim-py/bin/python'
 
 " correct the tab sizes
 set tabstop=4
@@ -40,8 +41,9 @@ set number
 " this helps with searching and replacing
 nnoremap / /\v
 vnoremap / /\v
-set ignorecase
-set smartcase
+set ignorecase          " -- search case insensitive
+set smartcase           " -- search matters if capital letter
+set inccommand=split    " -- for incsearch while sub
 "set gdefault
 set incsearch
 set showmatch
@@ -104,7 +106,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' } 
 " Plug 'alaviss/nim.nvim'
-" Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
+Plug 'tomasiser/vim-code-dark'
 
 " Initialize plugin system
 call plug#end()

@@ -8,8 +8,9 @@ export ZSH="/Users/dan/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="spaceship"
 SPACESHIP_GCLOUD_SHOW=false
-SPACESHIP_AWS_SHOW=false
+SPACESHIP_AWS_SHOW=true
 SPACESHIP_TIME_SHOW=true
+SPACESHIP_PYTHON_SHOW=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,7 +80,8 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git ssh-agent python pyenv zsh-syntax-highlighting poetry macos tmux)
-plugins=(git ssh-agent pyenv zsh-syntax-highlighting macos tmux)
+# plugins=(git ssh-agent direnv pyenv zsh-syntax-highlighting macos tmux brew)
+plugins=(git direnv pyenv zsh-syntax-highlighting macos tmux brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,3 +126,18 @@ export LESS=' -R -X -F '
 
 # Pragmatic Programmer mesage of the moment
 ppotm
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
+open_chrome_profile() {
+  open -na "Google Chrome" --args --profile-directory="Profile 1" "$@"
+}
+
+export BROWSER='open_chrome_profile'
+
+export AWS_PROFILE="prod-read-only"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/dan/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

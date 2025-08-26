@@ -50,7 +50,7 @@ alias vi=nvimvenv
 
 ## Rusty equivalents
 if [ -x "$(command -v bat)" ]; then
-    alias cat='bat'
+    alias cat="bat --theme='Monokai Extended'"
 fi
 
 if [ -x "$(command -v lsd)" ]; then
@@ -86,3 +86,20 @@ alias di="docker images --format 'table {{.Repository}}\t{{.Tag}}'"
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
 
 alias aws-login='aws sso login --profile ${AWS_PROFILE}'
+alias aws-login-prod='aws sso login --profile "admin"'
+
+alias claude-yolo="claude --dangerously-skip-permissions"
+
+vpn_connect() {
+    local vpn_name="${1:-Company_VPN}"
+    osascript -e "tell application \"Tunnelblick\"
+        connect \"$vpn_name\"
+        get state of first configuration where name = \"$vpn_name\"
+        repeat until result = \"CONNECTED\"
+            delay 1
+            get state of first configuration where name = \"$vpn_name\"
+        end repeat
+    end tell"
+}
+
+alias tunneblik='vpn_connect "star.healx.io"'
