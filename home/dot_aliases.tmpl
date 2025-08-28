@@ -76,8 +76,8 @@ alias git-backup-untracked-s3='git ls-files --others --exclude-standard | xargs 
 alias git-clean-untracked='git clean -n -d'
 
 # docker for smaller terminals!
-alias ds="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
-alias di="docker images --format 'table {{.Repository}}\t{{.Tag}}'"
+alias ds="docker ps --format 'table {{ `{{.ID}}` }}\t{{ `{{.Names}}` }}\t{{ `{{.Image}}` }}\t{{ `{{.Status}}` }}'"
+alias di="docker images --format 'table {{ `{{.Repository}}` }}\t{{ `{{.Tag}}` }}'"
 
 alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
 
