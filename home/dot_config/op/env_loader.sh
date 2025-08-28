@@ -14,29 +14,33 @@ if ! op account get &> /dev/null; then
     return 1
 fi
 
-# Load environment variables from 1Password
-# Format: export VAR_NAME=$(op read "op://Vault/Item Name/field")
+# Load environment variables from 1Password using op inject
+# This approach is more efficient than individual op read calls
 
+# Create a template with environment variables
+cat <<'EOF' | op inject --force 2>/dev/null | source /dev/stdin
 # API Keys
-export OPENAI_API_KEY=$(op read "op://Private/OpenAI API Key/credential" 2>/dev/null)
-export GEMINI_API_KEY=$(op read "op://Private/Gemini API Key/credential" 2>/dev/null)
+export OPENAI_API_KEY='op://Private/OpenAI API Key/credential'
+export GEMINI_API_KEY='op://Private/Gemini API Key/credential'
+
+# Personal Information  
+export GIT_USER_EMAIL='op://Private/Git Configuration/email'
+export GIT_USER_NAME='op://Private/Git Configuration/name'
+export GIT_SIGNING_KEY='op://Private/Git SSH Signing Key/public key'
 
 # Database URLs (example)
-# export DATABASE_URL=$(op read "op://Private/Database/url" 2>/dev/null)
+# export DATABASE_URL='op://Private/Database/url'
 
 # AWS/Cloud credentials (if not using SSO)
-# export AWS_ACCESS_KEY_ID=$(op read "op://Private/AWS Personal/username" 2>/dev/null)
-# export AWS_SECRET_ACCESS_KEY=$(op read "op://Private/AWS Personal/password" 2>/dev/null)
+# export AWS_ACCESS_KEY_ID='op://Private/AWS Personal/username'
+# export AWS_SECRET_ACCESS_KEY='op://Private/AWS Personal/password'
 
 # GitHub/Git tokens
-# export GITHUB_TOKEN=$(op read "op://Private/GitHub Personal Token/credential" 2>/dev/null)
+# export GITHUB_TOKEN='op://Private/GitHub Personal Token/credential'
 
 # Slack/Discord webhooks
-# export SLACK_WEBHOOK=$(op read "op://Private/Slack Webhook/url" 2>/dev/null)
+# export SLACK_WEBHOOK='op://Private/Slack Webhook/url'
 
 # Custom application secrets
-# export MY_APP_SECRET=$(op read "op://Private/My App/secret" 2>/dev/null)
-
-# Only export variables that were successfully retrieved (not empty)
-[[ -z "$OPENAI_API_KEY" ]] && unset OPENAI_API_KEY
-[[ -z "$GEMINI_API_KEY" ]] && unset GEMINI_API_KEY
+# export MY_APP_SECRET='op://Private/My App/secret'
+EOF
