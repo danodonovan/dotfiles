@@ -196,7 +196,7 @@ This setup uses chezmoi's data variables for machine-specific settings. On each 
     # Git user configuration
     git_user_email = "user@example.com"
     git_user_name = "Your Name"
-    git_signing_key = "ssh-ed25519 REPLACE_WITH_YOUR_SSH_PUBLIC_KEY"
+    git_signing_key = "ssh-ed25519 REPLACE_WITH_YOUR_SSH_PUBLIC_KEY_FINGERPRINT user@example.com"
 
     # VPN settings
     vpn_name = "company.vpn.io"
@@ -249,8 +249,8 @@ source ~/.zshrc
 
 ```bash
 # chezmoi status and operations
-chezmoi status                    # Show status
-chezmoi diff                      # Show differences
+chezmoi status                   # Show status
+chezmoi diff                     # Show differences
 chezmoi apply --dry-run          # Preview changes
 chezmoi update                   # Pull and apply updates
 chezmoi cd                       # Go to chezmoi source directory
