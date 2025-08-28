@@ -69,6 +69,7 @@ op item create --category=password --title="Gemini API Key" --vault="Private"
 - Secrets are loaded from 1Password using `~/.config/op/env_loader.sh`
 - No secrets are stored in git
 - Graceful fallback if 1Password CLI is unavailable
+- Directory permissions are automatically set to 700 (required by 1Password CLI)
 - See `~/.config/op/README.md` for detailed setup
 
 ## 🛠️ Managing Dotfiles
@@ -227,6 +228,10 @@ chezmoi diff    # See what would change
 ```bash
 op signin       # Re-authenticate
 op account get  # Verify authentication
+
+# If you get "permissions too broad" error:
+# This should be handled automatically by chezmoi, but if not:
+chmod 700 ~/.config/op
 ```
 
 **Git signing issues:**
