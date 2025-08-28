@@ -158,7 +158,7 @@ Files prefixed with `dot_` become hidden dotfiles in your home directory.
 ### Optional Tools
 Many aliases and functions expect these tools:
 - `bat` - Better cat with syntax highlighting
-- `lsd` - Modern ls replacement  
+- `lsd` - Modern ls replacement
 - `dust` - Modern du replacement
 - `nvim` - Neovim editor
 - `atuin` - Shell history search
@@ -178,15 +178,40 @@ echo "export LOCAL_VAR=value" >> ~/.zshrc.local
 git config --file ~/.config/git/local user.email "work@company.com"
 ```
 
-### Templating
+### Machine-Specific Configuration
 
-Chezmoi supports templating for different machines:
+This setup uses chezmoi's data variables for machine-specific settings. On each new machine, create a `~/.config/chezmoi/chezmoi.toml` file:
 
-```bash
-# Edit templates
-chezmoi edit ~/.gitconfig
-# Add template logic like {{ if eq .hostname "work-laptop" }}
+```toml
+# ~/.config/chezmoi/chezmoi.toml
+[data]
+    # Machine-specific paths
+    backup_dir = "/Volumes/Data/git-untracked"  # Desktop
+    # backup_dir = "$HOME/Archive/git-untracked"  # Laptop
+    machine_type = "desktop"  # or "laptop"
+
+    # SSH key identity
+    ssh_key_name = "id_rsa_default"  # Change to "id_ed25519_laptop" etc. per machine
+
+    # Git user configuration
+    git_user_email = "user@example.com"
+    git_user_name = "Your Name"
+    git_signing_key = "ssh-ed25519 REPLACE_WITH_YOUR_SSH_PUBLIC_KEY"
+
+    # VPN settings
+    vpn_name = "company.vpn.io"
 ```
+
+Templates in the dotfiles (like `dot_aliases.tmpl`, `dot_zshrc.tmpl`, `dot_gitconfig.tmpl`) will use these variables:
+- `{{ .backup_dir }}` - Git backup directory path
+- `{{ .machine_type }}` - Machine type identifier
+- `{{ .ssh_key_name }}` - SSH key name for agent
+- `{{ .git_user_email }}` - Git user email
+- `{{ .git_user_name }}` - Git user name
+- `{{ .git_signing_key }}` - Git SSH signing key
+- `{{ .vpn_name }}` - VPN connection name
+
+This file is ignored by git, so each machine can have different settings.
 
 ## 🆘 Troubleshooting
 
@@ -225,7 +250,7 @@ source ~/.zshrc
 ```bash
 # chezmoi status and operations
 chezmoi status                    # Show status
-chezmoi diff                      # Show differences  
+chezmoi diff                      # Show differences
 chezmoi apply --dry-run          # Preview changes
 chezmoi update                   # Pull and apply updates
 chezmoi cd                       # Go to chezmoi source directory

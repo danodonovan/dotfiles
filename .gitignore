@@ -1,2 +1,5 @@
 *.un~
 *.DS_Store
+
+# Machine-specific chezmoi config
+home/dot_config/chezmoi/chezmoi.toml

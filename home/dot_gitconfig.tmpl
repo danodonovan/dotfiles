@@ -1,7 +1,7 @@
 [user]
-	email = dan.odonovan@gmail.com
-	name = Dan O'Donovan
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDNUGUm4JtFSuK0qTrWWTsoRzw8X+Zj12pFqf6f5SD16
+	email = {{ .git_user_email }}
+	name = {{ .git_user_name }}
+	signingkey = {{ .git_signing_key }}
 [push]
 	default = simple
 	autoSetupRemote = true

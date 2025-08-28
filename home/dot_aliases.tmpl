@@ -1,0 +1,101 @@
+# Dan's handy aliases
+
+# some people don't have ack
+if type "ack-grep" > /dev/null; then
+    alias ack='ack-grep'
+fi
+
+# ls with colour is version specific (ie GNU coreutils) not OS
+if ls --color -d . >/dev/null 2>&1; then
+    alias ls='ls --color'
+fi
+
+# some more ls aliases
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+# if on macOS
+if type "mdfind" > /dev/null; then
+    alias locate='mdfind'
+fi
+
+# cd should help not hinder
+alias cd..='cd ..'
+alias ..='cd ..'
+
+# gragh always ps aux
+alias pa='ps aux'
+
+# display the working directory 
+alias .='echo $PWD'
+
+# give neovim a go
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim "$@"
+    deactivate
+  else
+    command nvim "$@"
+  fi
+}
+
+alias nvim=nvimvenv
+alias vim=nvimvenv
+alias vi=nvimvenv
+
+## Rusty equivalents
+if [ -x "$(command -v bat)" ]; then
+    alias cat="bat --theme='Monokai Extended'"
+fi
+
+if [ -x "$(command -v lsd)" ]; then
+    alias ls='lsd'
+fi
+
+if [ -x "$(command -v dust)" ]; then
+    alias du='dust'
+fi
+## end
+
+# git alias
+alias gs='git status -s'
+# alias gb='git branch --sort=committerdate'
+alias gb='git br'
+
+timestamp=$(date +%F_%T)
+backup_dir='{{ .backup_dir }}'
+git_dir=$(basename $(pwd))
+alias git-clean-branches='git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d'
+alias git-backup-untracked='git ls-files --others --exclude-standard -z | cpio --verbose -pmd0 ${backup_dir}/${PWD##*/}.$timestamp'
+alias git-backup-untracked-s3='git ls-files --others --exclude-standard | xargs -I{} aws s3 cp {} s3://YOURS3DIR/git-untracked/${PWD##*/}.$timestamp/{}'
+alias git-clean-untracked='git clean -n -d'
+
+# docker for smaller terminals!
+alias ds="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
+alias di="docker images --format 'table {{.Repository}}\t{{.Tag}}'"
+
+alias poetry_shell='source "$(dirname $(poetry run which python))/activate"'
+
+alias aws-login='aws sso login --profile ${AWS_PROFILE}'
+alias aws-login-prod='aws sso login --profile "admin"'
+
+alias claude-yolo="claude --dangerously-skip-permissions"
+
+vpn_connect() {
+    local vpn_name="${1:-Company_VPN}"
+    osascript -e "tell application \"Tunnelblick\"
+        connect \"$vpn_name\"
+        get state of first configuration where name = \"$vpn_name\"
+        repeat until result = \"CONNECTED\"
+            delay 1
+            get state of first configuration where name = \"$vpn_name\"
+        end repeat
+    end tell"
+}
+
+alias tunneblik='vpn_connect "{{ .vpn_name }}"'
