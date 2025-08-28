@@ -1,4 +1,4 @@
-let g:python_host_prog = '/Users/dan/.pyenv/versions/neovim/bin/python'
+" https://neovim.io/doc/user/provider.html
 let g:python3_host_prog = '/Users/dan/.pyenv/versions/neovim3/bin/python'
 set clipboard=unnamed
 
@@ -13,7 +13,9 @@ set expandtab
 set smartindent
 
 " delete trailing whitespace in only these files
-autocmd FileType markdown,c,cpp,java,php,python,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType markdown,c,cpp,java,php,python,html,txt,md autocmd BufWritePre <buffer> :%s/\s\+$//e
+" highlight .tmpl files as sh
+autocmd BufNewFile,BufRead *.tmpl set filetype=sh
 
 " we don't really want to be vi compatible
 set nocompatible
@@ -101,6 +103,7 @@ nnoremap ; :
 " - Avoid using standard Vim directory names like 'plugin'
 :call plug#begin('~/.config/nvim')
 
+" Run ':PlugInstall' to install plugins
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
 Plug 'https://github.com/neo4j-contrib/cypher-vim-syntax.git'
 Plug 'alaviss/nim.nvim'
