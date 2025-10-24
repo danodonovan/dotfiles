@@ -25,5 +25,7 @@ if [ -d "/Volumes/Data-02" ]; then
     export HOMEBREW_CACHE=/Volumes/Data-02/Caches/Homebrew
 fi
 
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
