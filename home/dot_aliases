@@ -70,6 +70,8 @@ alias gb='git br'
 timestamp=$(date +%F_%T)
 if [ "$HOSTNAME" = "dano-macmini" ]; then
     backup_dir='/Volumes/Data/git-untracked'
+elif [ "$HOSTNAME" = "dano-macmini-1" ]; then
+    backup_dir="/Volumes/Data-02/Archive/git-untracked"
 elif [ "$HOSTNAME" = "dano-m1" ]; then
     backup_dir='/Users/dan/Archive/git-untracked'
 fi
