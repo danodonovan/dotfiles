@@ -84,9 +84,10 @@ plugins=(git ssh-agent pyenv zsh-syntax-highlighting macos tmux)
 source $ZSH/oh-my-zsh.sh
 
 ## ssh stuff
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
-zstyle :omz:plugins:ssh-agent lifetime 4h
+# zstyle :omz:plugins:ssh-agent agent-forwarding on
+# zstyle :omz:plugins:ssh-agent identities id_rsa_dano-macmini
+# zstyle :omz:plugins:ssh-agent lifetime 4h
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 # reminder to update omz
 zstyle ':omz:update' mode reminder
@@ -126,3 +127,4 @@ export LESS=' -R -X -F '
 
 # Pragmatic Programmer mesage of the moment
 ppotm
+eval "$(direnv hook zsh)"
